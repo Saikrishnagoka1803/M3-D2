@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<h2 id="frst">Document</h2>
+<script>
+
+window.onload = () => {
+	finddata()
+};
+
+const finddata = () => {
+fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "6cbbdd862dmsh3a2cb08f5edd449p151a44jsn35d87e55fc31",
+		"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+	}
+})
+
+
+
+.then((res) => res.json())
+
+.then((jsonData) => {
+	console.log(jsonData.data[2].title)
+	let position = document.getElementById('frst')
+	position.innerText = jsonData.data[2].title
+
+
+})
+
+.catch(err => {
+	console.error(err);
+});
+}
+</script>
+
+</body>
+</html>
